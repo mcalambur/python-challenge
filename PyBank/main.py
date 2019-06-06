@@ -15,7 +15,7 @@ import locale
 locale.setlocale( locale.LC_ALL, '' )
 
 #Navigate to the Resources folder in RUTSOM201905DATA2 to open the CSV file
-csvpath = os.path.join(os.path.expanduser('~'),'Desktop', 'GIT_WS', 'RUTSOM201905DATA2', 'Homework', '03-Python', 'PyBank','Resources','budget_data.csv')
+csvpath = os.path.join(os.path.expanduser('~'),'Desktop', 'GIT_WS', 'python-challenge', 'PyBank','Resources','budget_data.csv')
 
 #Initialize variables 
 #Total Months and Total Amount that need to be calculated
@@ -53,9 +53,13 @@ with open(csvpath, newline='') as csvfile:
         profLoss.append(int(row[1]))
 
 # Specify the file to write to
-output_path = os.path.join(os.path.expanduser('~'),'Desktop', 'GIT_WS', 'RUTSOM201905DATA2', 'Homework', '03-Python', 'PyBank','Resources', 'budget_output.txt')
+output_path = os.path.join(os.path.expanduser('~'),'Desktop', 'GIT_WS', 'python-challenge', 'PyBank','Resources', 'budget_output.txt')
 
-# Open the file using "write" mode. Specify the variable to hold the contents
+#If the file exists already, delete it
+if os.path.exists(output_path):
+    os.remove(output_path)
+
+# Open the file using "append" mode
 output_file = open(output_path, 'a+')
 output_file.writelines(firstRow + "\n")
 
